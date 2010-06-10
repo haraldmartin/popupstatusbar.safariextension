@@ -1,5 +1,5 @@
 var StatusBarDiv = document.createElement("div");
-StatusBarDiv.className = "StatusBarDiv";
+StatusBarDiv.className = "com_jev_statusbar-StatusBarDiv";
 document.body.appendChild(StatusBarDiv);
 
 var onTheDiv = false;
