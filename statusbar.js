@@ -8,20 +8,19 @@ function() {
     onTheDiv = true
 },
 true);
+
+function mouseover(event) {
+    if (!onTheDiv) {
+        StatusBarDiv.innerHTML = event.currentTarget.href;
+        StatusBarDiv.style.display = "block"
+    }
+}
+function mouseout(event) {
+    StatusBarDiv.innerHTML = "";
+    StatusBarDiv.style.display = "none";
+    onTheDiv = false
+}
 for (var i in document.links) {
-    document.links[i].addEventListener("mouseover",
-    function(event) {
-        if (!onTheDiv) {
-            StatusBarDiv.innerHTML = event.currentTarget.href;
-            StatusBarDiv.style.display = "block"
-        }
-    },
-    true);
-    document.links[i].addEventListener("mouseout",
-    function(event) {
-        StatusBarDiv.innerHTML = "";
-        StatusBarDiv.style.display = "none";
-        onTheDiv = false
-    },
-    true);
+    document.links[i].addEventListener("mouseover", mouseover, true);
+    document.links[i].addEventListener("mouseout", mouseout, true);
 }
