@@ -15,6 +15,7 @@ The full source is available here on Github. Fork it and do whatever you want wi
 - JE.
 
 h2. Changes
+* 1.1 -- Status bar dodges the mouse cursor, rather than simply disappearing.
 * 1.0.1 -- Small fixes. Added update manifest.
 * 1.0 -- Release. Moved to Github
 * 0.1 -- Proof of concept.
