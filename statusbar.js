@@ -85,8 +85,11 @@ StatusBarDiv.addEventListener(
 	true
 );
 
-// attach event listeners to all existing links
-Array.prototype.forEach.call(document.links, function(link) {
-    link.addEventListener("mouseover", linkHover, true);
-    link.addEventListener("mouseout", linkUnHover, true);
-});
+// if not inside iframe, attach event listeners to all existing links
+if (window.location.href == window.parent.location.href) {
+    Array.prototype.forEach.call(document.links,
+    function(link) {
+        link.addEventListener("mouseover", linkHover, true);
+        link.addEventListener("mouseout", linkUnHover, true);
+    });
+};
