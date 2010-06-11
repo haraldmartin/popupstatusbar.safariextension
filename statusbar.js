@@ -8,6 +8,14 @@ StatusBarDiv.className = HIDDEN;
 document.body.appendChild(StatusBarDiv);
 
 var hideTimeout;
+function checkDuck(mouseEvent) {
+	console.log("checkduck");
+	if (mouseEvent.clientX > StatusBarDiv.offsetWidth) {
+		// unduck
+		StatusBarDiv.className = SHOWN;
+		window.removeEventListener("mousemove", checkDuck, true);
+	}
+}
 
 StatusBarDiv.addEventListener(
 	"mouseover",
@@ -15,8 +23,10 @@ StatusBarDiv.addEventListener(
 		clearTimeout(hideTimeout);
 		if (StatusBarDiv.className == SHOWN || StatusBarDiv.className == HIDDEN) {
 			StatusBarDiv.className = DUCKED;
+			window.addEventListener("mousemove", checkDuck, true);
 		} else {
 			StatusBarDiv.className = SHOWN;
+			window.removeEventListener("mousemove", checkDuck, true);
 		}
 	},
 	true
