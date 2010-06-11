@@ -1,5 +1,5 @@
-.com_jev_statusbar-StatusBarDiv {
-	display:none;
+#com_jev_statusbar-StatusBarDiv {
+	display:block;
 	position: fixed;
 	z-index: 999999999;
 	bottom: 0;
@@ -28,4 +28,11 @@
 	-webkit-transition-property:bottom, border-bottom-right-radius;
 	-webkit-transition-duration:.2s;
 	-webkit-transition-timing-function:ease-out;
+}
+#com_jev_statusbar-StatusBarDiv.com_jev_statusbar-hide {
+	display:none;
+}
+#com_jev_statusbar-StatusBarDiv.com_jev_statusbar-duck {
+	bottom:20px; /* height + padding-top/bottom + 1 */
+	-webkit-border-bottom-right-radius:5px;
 }

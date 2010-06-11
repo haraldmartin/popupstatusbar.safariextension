@@ -1,37 +1,43 @@
+const HIDDEN = "com_jev_statusbar-hide";
+const DUCKED = "com_jev_statusbar-duck";
+const SHOWN = "";
+
 var StatusBarDiv = document.createElement("a");
-StatusBarDiv.className = "com_jev_statusbar-StatusBarDiv";
+StatusBarDiv.id = "com_jev_statusbar-StatusBarDiv";
+StatusBarDiv.className = HIDDEN;
 document.body.appendChild(StatusBarDiv);
 
 var hideTimeout;
 
-StatusBarDiv.addEventListener("mouseover",
+StatusBarDiv.addEventListener(
+	"mouseover",
 	function() {
 		clearTimeout(hideTimeout);
-		if (StatusBarDiv.style.bottom == "" || StatusBarDiv.style.bottom === "0px") {
-			StatusBarDiv.style.bottom = "20px"; // height + padding-top/bottom + 1
-			StatusBarDiv.style.borderBottomRightRadius = "5px";
+		if (StatusBarDiv.className == SHOWN || StatusBarDiv.className == HIDDEN) {
+			StatusBarDiv.className = DUCKED;
 		} else {
-			StatusBarDiv.style.bottom = "0px";
-			StatusBarDiv.style.borderBottomRightRadius = "0";
+			StatusBarDiv.className = SHOWN;
 		}
 	},
-	true);
-StatusBarDiv.addEventListener("mouseout",
+	true
+);
+StatusBarDiv.addEventListener(
+	"mouseout",
 	function() {
 		hideTimeout = setTimeout(hideStatusDiv, 2);
-	});
+	},
+	true
+);
 
 function hideStatusDiv(event) {
-	StatusBarDiv.style.display = "none";
-	StatusBarDiv.style.bottom = 0;
-	StatusBarDiv.style.borderBottomRightRadius = "0";
+	StatusBarDiv.className = HIDDEN;
 }
 
 function mouseover(event) {
 	clearTimeout(hideTimeout);
     StatusBarDiv.innerHTML = event.currentTarget.href;
 	StatusBarDiv.href = event.currentTarget.href;
-    StatusBarDiv.style.display = "block";
+    if (StatusBarDiv.className != DUCKED) StatusBarDiv.className = SHOWN;
 }
 function mouseout(event) {
 	hideTimeout = setTimeout(hideStatusDiv, 2);
