@@ -89,7 +89,9 @@ StatusBarDiv.addEventListener(
 if (window.location.href == window.parent.location.href) {
     Array.prototype.forEach.call(document.links,
     function(link) {
-        link.addEventListener("mouseover", linkHover, true);
-        link.addEventListener("mouseout", linkUnHover, true);
+        if (link && link.addEventListener) {
+          link.addEventListener("mouseover", linkHover, true);
+          link.addEventListener("mouseout", linkUnHover, true);
+        }
     });
 };
